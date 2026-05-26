@@ -86,6 +86,7 @@ const userSchema = new mongoose.Schema({
         type:Date,
         default:null
     },
+    
     isSetupComplete:{
         type:Boolean,
         default:false
