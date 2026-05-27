@@ -1,15 +1,21 @@
+import { signInWithPopup } from 'firebase/auth';
 import React from 'react'
 import {FcGoogle} from 'react-icons/fc'
-// import {HiOutlineMicrophone , HiOutlineSparkles , HiOutlineCodeBracket , HiOutlineBolt} from 'react-icons/hi'
 import {
   HiOutlineMicrophone,
   HiOutlineSparkles,
   HiOutlineCodeBracket,
   HiBolt,
 } from 'react-icons/hi2'
+import { auth, provider } from '../utils/firebase';
+import axios from 'axios';
+import { serverUrl } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+
+    const navigate = useNavigate()
 
     const FEATURES = [
                     {
@@ -37,8 +43,28 @@ const Login = () => {
                     },
                     ];
 
+
+
+        const handleLogin = async () => {
+            try {
+                const result = await signInWithPopup(auth,provider);
+                const {displayName , email} = result.user
+                const res = await axios.post(serverUrl + "/api/auth/google" , {
+                    name:displayName , email
+                },{withCredentials:true})
+
+                console.log(res.data);
+                navigate('/');
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+
+
   return (
-    <div className='h-screen bg-gradient-to-br from-purple-50 via-white to-emerald-50 overflow-hidden flex items-center'>
+    <div className='min-h-screen bg-gradient-to-br from-purple-50 via-white to-emerald-50 overflow-hidden'>
         <div className='max-w-7xl mx-auto px-6 py-16 lg:py-24'>
 
             <div className='grid lg:grid-cols-2 gap-16 items-center'>
@@ -62,7 +88,7 @@ const Login = () => {
                     guide users, and integrate into any website instantly.
                 </p>
 
-                <button className='mt-10 h-16 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white text-lg font-semibold flex items-center gap-4 shadow-[0_20px_80px_rgba(139,92,246,0.25)] hover:scale-[1.02] transition cursor-pointer'>
+                <button onClick={handleLogin} className='mt-10 h-16 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white text-lg font-semibold flex items-center gap-4 shadow-[0_20px_80px_rgba(139,92,246,0.25)] hover:scale-[1.02] transition cursor-pointer'>
                 <FcGoogle className='text-3xl bg-white rounded-full' />
                     Continue with Google
                 </button>
@@ -98,7 +124,7 @@ const Login = () => {
 
         </div>
     </div>
-    
+
   )
 }
 
