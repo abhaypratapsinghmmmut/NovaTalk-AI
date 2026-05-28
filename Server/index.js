@@ -4,6 +4,7 @@ import connectDB from './configs/ConnectDB.js';
 import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
+import userRouter from './routes/user.route.js';
 
 
 dotenv.config();
@@ -25,7 +26,8 @@ app.get('/',(req,res) =>{
     res.json("hello from server");
 })
 
-app.use('/api/auth', authRouter)
+app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
 
 app.listen(PORT, ()=>{
     console.log(`server started at port ${PORT}`);
