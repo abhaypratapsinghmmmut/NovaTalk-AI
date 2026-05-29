@@ -13,7 +13,7 @@ import { serverUrl } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 
-const Login = () => {
+const Login = ({setUser}) => {
 
     const navigate = useNavigate()
 
