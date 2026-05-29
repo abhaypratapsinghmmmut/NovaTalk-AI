@@ -7,4 +7,5 @@ export const getToken = async (userId) => {
     } catch (error) {
         console.log(error);
     }
+    
 }
