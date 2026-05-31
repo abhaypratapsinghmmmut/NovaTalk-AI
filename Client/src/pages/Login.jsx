@@ -54,7 +54,9 @@ const Login = ({setUser}) => {
                 },{withCredentials:true})
 
                 console.log(res.data);
+                setUser(res.data);
                 navigate('/');
+                
 
             } catch (error) {
                 console.log(error);

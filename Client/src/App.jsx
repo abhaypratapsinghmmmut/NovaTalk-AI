@@ -20,7 +20,7 @@ const App = () => {
    useEffect(()=>{
     const ftechMe = async () => {
       try {
-        const res = await axios.get(serverUrl + '/api/user/current-user' , {withCrentials:true});
+        const res = await axios.get(serverUrl + '/api/user/current-user' , {withCredentials:true});
 
         console.log(res.data);
         setUser(res.data);
@@ -28,8 +28,6 @@ const App = () => {
 
       } catch (error) {
         console.log(error)
-        console.log(error.response?.data);
-  console.log(error.response?.status);
         setLoading(false);
       }
     }
