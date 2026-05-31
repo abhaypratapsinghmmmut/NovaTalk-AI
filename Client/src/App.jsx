@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Navbar from './components/Navbar.jsx'
 import Billing from './pages/Billing.jsx'
 import Builder from './pages/Builder.jsx'
+import {Toaster} from 'react-hot-toast'
 
 export const serverUrl = "http://localhost:5000"
 
@@ -37,6 +38,7 @@ const App = () => {
 
   return (
     <>
+    <Toaster position='top-right'/>
       <Routes>
         <Route path='/login' element={<Login setUser={setUser} />} />
 

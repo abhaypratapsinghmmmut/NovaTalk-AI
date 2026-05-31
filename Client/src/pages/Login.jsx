@@ -11,6 +11,7 @@ import { auth, provider } from '../utils/firebase';
 import axios from 'axios';
 import { serverUrl } from '../App';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const Login = ({setUser}) => {
@@ -55,11 +56,13 @@ const Login = ({setUser}) => {
 
                 console.log(res.data);
                 setUser(res.data);
+                toast.success("Login Successfully")
                 navigate('/');
                 
 
             } catch (error) {
                 console.log(error);
+                toast.error("Login Failed")
             }
         }
 
