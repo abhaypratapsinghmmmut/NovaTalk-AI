@@ -16,24 +16,27 @@ export const serverUrl = "http://localhost:5000"
 const App = () => {
 
    const [user, setUser] = useState(null);
-   const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(true);
 
-   useEffect(()=>{
-    const ftechMe = async () => {
-      try {
-        const res = await axios.get(serverUrl + '/api/user/current-user' , {withCredentials:true});
+   useEffect(() => {
+  const fetchMe = async () => {
+    try {
+      const res = await axios.get(
+        serverUrl + "/api/user/current-user",
+        { withCredentials: true }
+      );
 
-        console.log(res.data);
-        setUser(res.data);
-        setLoading(false);
-
-      } catch (error) {
-        console.log(error)
-        setLoading(false);
-      }
+      setUser(res.data);
+    } catch (error) {
+      console.log(error);
+      setUser(null);
+    } finally {
+      setLoading(false);
     }
-    ftechMe();
-   },[])
+  };
+
+  fetchMe();
+}, []);
 
 
   return (
