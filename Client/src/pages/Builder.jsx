@@ -3,6 +3,7 @@ import { FiPlus, FiTrash2 } from "react-icons/fi";
 import { saveAssistant } from '../../../Server/controllers/user.controller';
 import { serverUrl } from '../App';
 import { linkWithCredential } from 'firebase/auth';
+import User from "../../../Server/model/user.model"
 
 const THEMES = [
   "light",
@@ -53,8 +54,9 @@ const Builder = ({user,setUser}) => {
     const newPage = {
       name: pageName,
       path: pagePath,
-      keyword: pageKeywords.split(",").map((k)=>k.trim());
+      keyword: pageKeywords.split(",").map((k)=>k.trim())
     }
+    
 
     setPages([...pages,newPage])
 
@@ -297,3 +299,5 @@ const Builder = ({user,setUser}) => {
 
 
 export default Builder
+
+
