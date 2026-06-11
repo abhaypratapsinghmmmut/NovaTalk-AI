@@ -1,9 +1,14 @@
-import React from 'react'
+// import React from 'react'
+// import { FiPlus, FiTrash2 } from "react-icons/fi";
+// import { saveAssistant } from '../../../Server/controllers/user.controller';
+// import { serverUrl } from '../App';
+// import { linkWithCredential } from 'firebase/auth';
+// import User from "../../../Server/model/user.model"
+import React, { useState } from "react";
+import axios from "axios";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
-import { saveAssistant } from '../../../Server/controllers/user.controller';
-import { serverUrl } from '../App';
-import { linkWithCredential } from 'firebase/auth';
-import User from "../../../Server/model/user.model"
+import { toast } from "react-hot-toast";
+import { serverUrl } from "../App";
 
 const THEMES = [
   "light",
@@ -44,7 +49,7 @@ const Builder = ({user,setUser}) => {
 
   const [loading, setLoading] = useState(false);
 
-  const [editAssistant, setEditAssistant] = useState(user?.isSetupComplete)
+  const [editAssistant, setEditAssistant] = useState(!user?.isSetupComplete)
 
   const addPage = () =>{
     if(!pageName || !pagePath){
@@ -66,14 +71,10 @@ const Builder = ({user,setUser}) => {
 
   }
 
-  const removePage = () =>{
-
-    const updatePage = pages.filter((_,i)=>i !==index)
-
-    setPages(updatePage)
-
-
-  }
+  const removePage = (index) => {
+  const updatedPages = pages.filter((_, i) => i !== index);
+  setPages(updatedPages);
+};
 
   const saveAssistant = async () => {
   setLoading(true);
@@ -106,6 +107,10 @@ const Builder = ({user,setUser}) => {
   }
 };
 
+
+console.log(user);
+console.log(user?.isSetupComplete);
+console.log(editAssistant);
 
 
   return (
@@ -269,9 +274,11 @@ const Builder = ({user,setUser}) => {
                     className="flex items-center justify-between border border-gray-100 rounded-2xl p-4"
                   >
                     <div>
-                      <p className="font-medium">{page.pageName}</p>
-                      <p className='text-sm text-gray-400'>{page.path}</p>
-                      <p className='text-sm text-gray-400'>{page.keywords}</p>
+                      <p className="font-medium">{page.name}</p>
+                      <p className="text-sm text-gray-400">{page.path}</p>
+                      <p className="text-sm text-gray-400">
+                        {page.keyword?.join(", ")}
+                      </p>
                     </div>
 
                     <button onClick={()=>removePage(index)} className='text-red-500'>

@@ -21,7 +21,7 @@ export const getCurrentUser = async (req,res) => {
 
 export const saveAssistant = async (req,res) => {
     try {
-        const {assistantName, businessName, businessType, businessDescription, tone, thee, geminiApiKey, pages} = req.body;
+        const {assistantName, businessName, businessType, businessDescription, tone, theme, geminiApiKey, pages} = req.body;
 
         const user = await User.findById(req.userId);
 
