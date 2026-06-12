@@ -147,6 +147,7 @@ console.log(editAssistant);
             <h2 className='text-lg font-semibold mb-5'>
               Appearance
             </h2>
+            
 
             <div>
               <label className='text-sm text-gray-600 mb-3 block'>
