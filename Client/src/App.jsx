@@ -12,6 +12,7 @@ import Builder from './pages/Builder.jsx'
 import {Toaster} from 'react-hot-toast'
 
 export const serverUrl = "http://localhost:5000"
+export const clientUrl = "http://localhost:5173"
 
 const App = () => {
 
