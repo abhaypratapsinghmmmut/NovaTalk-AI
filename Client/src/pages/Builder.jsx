@@ -359,6 +359,8 @@ const Builder = ({user,setUser}) => {
                   value={pageName}
                 />
 
+
+
                 <input
                   type="text"
                   placeholder="/pricing"
