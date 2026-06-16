@@ -22,6 +22,8 @@ app.use(cors({
 
 const PORT=process.env.PORT;
 
+
+
 app.get('/',(req,res) =>{
     res.json("hello from server");
 })
