@@ -62,6 +62,7 @@
             <span></span>
             <span></span>
         </div>
+        
 
         <!-- User Text -->
         <div class="nova-user-text"></div>
