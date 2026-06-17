@@ -6,7 +6,7 @@
 
     const theme = "dark";
 
-    const assistantConfig = null;
+    let assistantConfig = null;
 
     // load css
 
@@ -18,6 +18,7 @@
 
     document.head.appendChild(link);
 
+    
     // create popup
 
     const popup = document.createElement("div");
@@ -112,7 +113,53 @@
     }
 
 
-    
+    // load assistant
+
+    const loadAssistant = async () => {
+        try {
+            
+            const res = await fetch(`http://localhost:5000/api/assistant/config/${userId}`)
+
+            const data = res.json();
+
+            console.log(data)
+
+            if(data){
+                assistantConfig = data.user
+                applyConfig();
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const applyConfig = ()=>{
+        if(!assistantConfig){
+            return;
+        }
+
+        popup.className = `nova-popup theme-${assistantConfig.theme}`
+
+        button.className = `nova-btn theme-${assistantConfig.theme}`
+
+        const title = popup.querySelector(".nova-title")
+
+        title.innerHTML = `Hello I'm ${assistantConfig.assistantName}`;
+
+        const subTitle = popup.querySelector(".nova-sub");
+
+        subTitle.innerHTML = `
+                                Welcome to
+                                ${assistantConfig.businessName}.
+                                <br />
+                                Ask anything about your website.
+                                `;
+
+    }
+
+
+    loadAssistant();
 
 
 })();
