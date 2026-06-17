@@ -163,6 +163,8 @@ export const askAssistant = async (req,res) => {
             aiResponse
         })
 
+        
+
     } catch (error) {
         return res.status(500).json({success:false, message: "Assistant AI Error"})
     }
