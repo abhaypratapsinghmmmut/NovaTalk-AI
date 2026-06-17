@@ -18,7 +18,6 @@ export const getAssistantConfig = async (req,res) => {
 }
 
 
-
 export const askAssistant = async (req,res) => {
     try {
         
