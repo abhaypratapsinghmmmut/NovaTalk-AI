@@ -71,7 +71,7 @@ export const askAssistant = async (req,res) => {
                     cleanMessage.startsWith(word)
                 );
 
-                
+
 
             // User wants navigation
             if (wantsNavigation) {
@@ -170,4 +170,6 @@ export const askAssistant = async (req,res) => {
     } catch (error) {
         return res.status(500).json({success:false, message: "Assistant AI Error"})
     }
+
+    
 }
