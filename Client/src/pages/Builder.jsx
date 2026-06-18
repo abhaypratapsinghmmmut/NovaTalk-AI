@@ -402,8 +402,8 @@ const Builder = ({user,setUser}) => {
 
             <button
               onClick={saveAssistant}
-              disabled={loading}
-              className="w-full h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-semibold"
+              disabled={loading || !assistantName || !businessName || !businessType || !businessDescription || !geminiApiKey}
+              className="w-full h-14 rounded-2xl bg-gradient-to-r from-purple-500 to-emerald-500 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Saving..." : user.isSetupComplete ? "Update Assistant" : "Save Assistant"}
             </button>

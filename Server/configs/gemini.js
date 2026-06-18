@@ -48,7 +48,7 @@ export const generateGeminiResponse = async ({prompt, apikey, user}) => {
             user.geminiStatus = "active";
             await user.save();
 
-            const data = response.json()
+            const data = await response.json()
 
             const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
