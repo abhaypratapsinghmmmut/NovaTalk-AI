@@ -38,11 +38,6 @@
             <div class="nova-orb-glow"></div>
 
             <div class="nova-orb">
-                <img
-                    src="http://localhost:5173/logo.png"
-                    alt="Nova Logo"
-                    class="nova-orb-logo"
-                />
             </div>
 
         </div>
