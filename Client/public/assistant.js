@@ -37,7 +37,13 @@
 
             <div class="nova-orb-glow"></div>
 
-            <div class="nova-orb"></div>
+            <div class="nova-orb">
+                <img
+                    src="http://localhost:5173/logo.png"
+                    alt="Nova Logo"
+                    class="nova-orb-logo"
+                />
+            </div>
 
         </div>
 
@@ -75,7 +81,7 @@
 
     <div class="nova-bottom">
         <button class="nova-mic">
-            <img src="http://localhost:5173/mic.svg" alt="mic" class="nova-mic-icon" />
+            <img src="http://localhost:5173/mic.png" alt="mic" class="nova-mic-icon" />
         </button>
     </div>
 
@@ -120,14 +126,15 @@
             
             const res = await fetch(`http://localhost:5000/api/assistant/config/${userId}`)
 
-            const data = res.json();
+            const data = await res.json();
 
-            console.log(data)
+            console.log(data);
 
             if(data){
-                assistantConfig = data.user
+                assistantConfig = data.user;
                 applyConfig();
             }
+            console.log("API Response:", data);
 
         } catch (error) {
             console.log(error)
@@ -218,7 +225,7 @@
 
         recognition.lang = "en-US";
 
-        recognition.continous = false;
+        recognition.continuous = false;
 
         recognition.interimResults = false;
 
@@ -235,7 +242,7 @@
         }
 
         recognition.onresult = (e)=>{
-            const text = e.result[0][0].transcript
+            const text = e.results[0][0].transcript
 
             userText.innerText = "You: " + text;
 
@@ -245,7 +252,7 @@
                 try {
                     status.innerText = "Thinking...";
 
-                    const res = await fetch("http:/localhost:5000/api/assistant/ask" , {
+                    const res = await fetch("http://localhost:5000/api/assistant/ask" , {
                         method: "POST",
                         headers:{
                             "content-Type":

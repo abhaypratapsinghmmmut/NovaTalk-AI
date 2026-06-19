@@ -49,8 +49,6 @@ export const askAssistant = async (req,res) => {
 
         }
 
-        const cleanMessage = message.toLowerCase()
-
         const cleanMessage = message.toLowerCase();
 
         if (user.enableNavigation) {
