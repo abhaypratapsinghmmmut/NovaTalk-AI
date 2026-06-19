@@ -275,7 +275,7 @@
                         }
                     }
                     else{
-                        speak("Check your Plan response error")
+                        speak("Response error. Please Check your Plan")
                     }
 
 
