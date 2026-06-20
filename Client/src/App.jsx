@@ -11,7 +11,7 @@ import Billing from './pages/Billing.jsx'
 import Builder from './pages/Builder.jsx'
 import {Toaster} from 'react-hot-toast'
 
-export const serverUrl = "http://localhost:5000"
+export const serverUrl = "https://novatalk-ai-server.onrender.com"
 export const clientUrl = "http://localhost:5173"
 
 const App = () => {
