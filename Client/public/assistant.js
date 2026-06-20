@@ -119,7 +119,7 @@
     const loadAssistant = async () => {
         try {
             
-            const res = await fetch(`http://localhost:5000/api/assistant/config/${userId}`)
+            const res = await fetch(`https://novatalk-ai-server.onrender.com/api/assistant/config/${userId}`)
 
             const data = await res.json();
 
@@ -247,7 +247,7 @@
                 try {
                     status.innerText = "Thinking...";
 
-                    const res = await fetch("http://localhost:5000/api/assistant/ask" , {
+                    const res = await fetch("https://novatalk-ai-server.onrender.com/api/assistant/ask" , {
                         method: "POST",
                         headers:{
                             "content-Type":
