@@ -12,7 +12,7 @@ import Builder from './pages/Builder.jsx'
 import {Toaster} from 'react-hot-toast'
 
 export const serverUrl = "https://novatalk-ai-server.onrender.com"
-export const clientUrl = "http://localhost:5173"
+export const clientUrl = "https://novatalk-ai-bifg.onrender.com"
 
 const App = () => {
 
