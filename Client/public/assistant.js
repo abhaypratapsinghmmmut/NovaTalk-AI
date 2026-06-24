@@ -13,7 +13,7 @@
     const link = document.createElement("link")
 
     link.rel = "stylesheet"
-    link.href = "http://localhost:5173/assistant.css"
+    link.href = "https://novatalk-ai-bifg.onrender.com/assistant.css"
 
 
     document.head.appendChild(link);
@@ -76,7 +76,7 @@
 
     <div class="nova-bottom">
         <button class="nova-mic">
-            <img src="http://localhost:5173/mic.png" alt="mic" class="nova-mic-icon" />
+            <img src="https://novatalk-ai-bifg.onrender.com/mic.png" alt="mic" class="nova-mic-icon" />
         </button>
     </div>
 
@@ -94,7 +94,7 @@
 
     button.innerHTML = `
                         <img
-                        src="http://localhost:5173/logo.png"
+                        src="https://novatalk-ai-bifg.onrender.com/logo.png"
                         alt="logo"
                         />
                         `;
